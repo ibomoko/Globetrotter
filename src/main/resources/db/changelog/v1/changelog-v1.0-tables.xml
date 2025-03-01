@@ -57,6 +57,22 @@
         </addColumn>
     </changeSet>
 
+    <changeSet id="create_invitations_table" author="Ahmadov Ibrahim">
+        <createTable tableName="invitations">
+            <column name="id" type="char(32)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="user_id" type="char(32)"/>
+            <column name="create_date" type="timestamp without time zone"/>
+            <column name="is_completed" type="bool"/>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="invitations"
+                                 baseColumnNames="user_id"
+                                 constraintName="fk_users_invitations"
+                                 referencedTableName="users"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
 
 
 </databaseChangeLog>

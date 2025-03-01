@@ -15,4 +15,10 @@ public interface GameSessionRepository extends JpaRepository<GameSession, String
 
     @Query("SELECT gs FROM GameSession gs WHERE gs.id = :id AND gs.user.id = :userId AND gs.endDate IS NULL ")
     Optional<GameSession> findByIdAndUserIdAndEndDateIsNull(String id, String userId);
+
+    @Query("SELECT MAX(gs.score) FROM GameSession gs WHERE gs.user.id = :userId AND gs.endDate IS NOT NULL")
+    Integer findMaxScoreByUserId(String userId);
+
+    @Query("SELECT gs.score FROM GameSession gs WHERE gs.user.id = :userId AND gs.endDate IS NOT NULL ORDER BY gs.endDate DESC LIMIT 1")
+    Integer findLastScoreByUserId(String userId);
 }
