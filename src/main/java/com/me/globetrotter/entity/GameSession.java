@@ -5,6 +5,7 @@ import com.me.globetrotter.entity.idgenerator.CustomId;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -31,7 +32,16 @@ public class GameSession {
     private Integer currentRound;
     private Integer score;
 
+    @Column(name = "create_date")
+    private Date createDate;
+
+    @Column(name = "end_date")
+    private Date endDate;
+
     public synchronized void incrementCurrentRound() {
         this.currentRound++;
+
+    }public synchronized void incrementScore() {
+        this.score++;
     }
 }

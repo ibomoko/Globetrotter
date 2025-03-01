@@ -1,4 +1,4 @@
-package com.me.globetrotter.dto;
+package com.me.globetrotter.dto.security;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
