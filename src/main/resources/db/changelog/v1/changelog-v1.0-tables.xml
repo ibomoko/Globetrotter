@@ -45,4 +45,18 @@
                                  referencedColumnNames="id"/>
     </changeSet>
 
+    <changeSet id="add_create_date_to_game_sessions_table" author="Ahmadov Ibrahim">
+        <addColumn tableName="game_sessions">
+            <column name="create_date" type="timestamp without time zone"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="add_end_date_to_game_sessions_table" author="Ahmadov Ibrahim">
+        <addColumn tableName="game_sessions">
+            <column name="end_date" type="timestamp without time zone"/>
+        </addColumn>
+    </changeSet>
+
+
+
 </databaseChangeLog>

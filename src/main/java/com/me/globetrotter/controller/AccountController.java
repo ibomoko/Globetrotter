@@ -1,6 +1,6 @@
 package com.me.globetrotter.controller;
 
-import com.me.globetrotter.dto.AuthRequest;
+import com.me.globetrotter.dto.security.AuthRequest;
 import com.me.globetrotter.dto.security.TokenDetail;
 import com.me.globetrotter.service.AccountService;
 import jakarta.validation.Valid;

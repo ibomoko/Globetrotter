@@ -1,6 +1,6 @@
 package com.me.globetrotter.service;
 
-import com.me.globetrotter.dto.AuthRequest;
+import com.me.globetrotter.dto.security.AuthRequest;
 import com.me.globetrotter.dto.security.TokenDetail;
 import com.me.globetrotter.entity.User;
 import com.me.globetrotter.error.exception.ResourceAlreadyExistsException;
