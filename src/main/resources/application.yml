@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: Globetrotter
+  datasource:
+    url: jdbc:postgresql://${GLOBETROTTER_BACKEND_SERVICE_DB_HOST:}:${GLOBETROTTER_BACKEND_SERVICE_DB_PORT:5432}/${GLOBETROTTER_BACKEND_SERVICE_DB_CATALOG:postgres}?currentSchema=${GLOBETROTTER_BACKEND_SERVICE_DB_SCHEMA}
+    username: ${GLOBETROTTER_BACKEND_SERVICE_DB_USERNAME}
+    password: ${GLOBETROTTER_BACKEND_SERVICE_DB_PASSWORD}
+  jackson:
+    date-format: MMMM dd yyyy / HH:mm
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+        default_schema: ${GLOBETROTTER_BACKEND_SERVICE_DB_SCHEMA}
+    hibernate:
+      ddl-auto: none
+    open-in-view: false
+  liquibase:
+    change-log: classpath:/db/changelog/changelog-master.xml
+    default-schema: ${GLOBETROTTER_BACKEND_SERVICE_DB_SCHEMA}
+    liquibase-schema: ${GLOBETROTTER_BACKEND_SERVICE_DB_SCHEMA}
+    enabled: true
+
+
+security:
+  auth:
+    whitelist: >
+      /swagger-resources,
+      /swagger-resources/**,
+      /configuration/ui,
+      /configuration/security,
+      /swagger-ui.html,
+      /webjars/**,
+      /api/v1/public/**,
+      /v3/api-docs/**,
+      /v3/api-docs,
+      /swagger-ui/**,
+      /v2/api-docs
+  jwt:
+    secret: ${GLOBETROTTER_BACKEND_SERVICE_SECRET}
+    default-expiration-time: 180
+    issuer: ${GLOBETROTTER_BACKEND_SERVICE_ISSUER}
+  basic:
+    username: ${GLOBETROTTER_BACKEND_SERVICE_USERNAME}
+    password: ${GLOBETROTTER_BACKEND_SERVICE_PASSWORD}
+  server: ${GLOBETROTTER_BACKEND_SERVICE_URL}
