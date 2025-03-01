@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="create_users_table" author="Ahmadov Ibrahim">
+        <createTable tableName="users">
+            <column name="id" type="char(32)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="username" type="varchar(100)"/>
+            <column name="password" type="varchar(100)"/>
+            <column name="games_count" type="int"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create_destinations_table" author="Ahmadov Ibrahim">
+        <createTable tableName="destinations">
+            <column name="id" type="char(32)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="city" type="varchar(100)"/>
+            <column name="country" type="varchar(100)"/>
+            <column name="clues" type="text"/>
+            <column name="fun_fact" type="text"/>
+            <column name="trivia" type="text"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create_game_sessions_table" author="Ahmadov Ibrahim">
+        <createTable tableName="game_sessions">
+            <column name="id" type="char(32)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="user_id" type="char(32)"/>
+            <column name="destination_ids" type="text"/>
+            <column name="current_round" type="int"/>
+            <column name="score" type="int"/>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="game_sessions"
+                                 baseColumnNames="user_id"
+                                 constraintName="fk_users_game_sessions"
+                                 referencedTableName="users"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+</databaseChangeLog>
